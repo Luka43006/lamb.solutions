@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_FIELD_LENGTH = 2000;
+
+const SMTP_HOST = process.env.SMTP_HOST ?? "mail.privateemail.com";
+const SMTP_PORT = Number(process.env.SMTP_PORT ?? 587);
+const SMTP_USER = process.env.SMTP_USER ?? "info@lamb.solutions";
+const SMTP_PASS = process.env.SMTP_PASS;
+const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? SMTP_USER;
 
 type ContactPayload = {
   name: string;
@@ -35,6 +42,34 @@ function validate(body: unknown): { data: ContactPayload } | { errors: Record<st
   return { data: { name, email, company, message } };
 }
 
+async function sendNotification(data: ContactPayload) {
+  if (!SMTP_PASS) {
+    console.warn("[contact] SMTP_PASS not set — skipping email notification.");
+    return;
+  }
+
+  const transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_PORT === 465,
+    auth: { user: SMTP_USER, pass: SMTP_PASS },
+  });
+
+  await transporter.sendMail({
+    from: `"Lamb Solutions sajt" <${SMTP_USER}>`,
+    to: CONTACT_TO_EMAIL,
+    replyTo: data.email,
+    subject: `Novi upit sa sajta — ${data.name}`,
+    text: [
+      `Ime: ${data.name}`,
+      `Email: ${data.email}`,
+      `Firma: ${data.company || "—"}`,
+      "",
+      data.message,
+    ].join("\n"),
+  });
+}
+
 export async function POST(request: NextRequest) {
   let body: unknown;
   try {
@@ -51,8 +86,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, errors: result.errors }, { status: 400 });
   }
 
-  // No email/CRM integration wired up yet — submissions are captured here for now.
   console.log("[contact]", { ...result.data, receivedAt: new Date().toISOString() });
+
+  try {
+    await sendNotification(result.data);
+  } catch (err) {
+    console.error("[contact] email send failed", err);
+  }
 
   return NextResponse.json({ ok: true });
 }
