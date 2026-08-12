@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-31T22:15:00Z",
+  "title": "Design System: Lamb Solutions",
+  "extensions": {
+    "colorMeta": {
+      "bronze": {
+        "role": "primary",
+        "displayName": "Bronze Signal",
+        "canonical": "#b8935e",
+        "tonalRamp": ["#3d2f1c", "#5c4629", "#7a5d36", "#997444", "#b8935e", "#c9ab7f", "#dac3a0", "#ecdcc2"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0a0a09",
+        "tonalRamp": ["#0a0a09", "#121110", "#1e1c1a", "#2f2c29", "#454039", "#61594d", "#847a68", "#a89c86"]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "#121110"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#f7f4ec",
+        "tonalRamp": ["#4a463c", "#6b6558", "#8d8575", "#afa693", "#c9c0ac", "#e1dac9", "#f0ecdf", "#f7f4ec"]
+      },
+      "paper-dim": {
+        "role": "neutral",
+        "displayName": "Paper Dim",
+        "canonical": "#ece7d9"
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#a8a49a"
+      },
+      "rust": {
+        "role": "error",
+        "displayName": "Rust",
+        "canonical": "#e0684a",
+        "tonalRamp": ["#421f14", "#66301f", "#8b4129", "#af5233", "#e0684a", "#e78b73", "#eeae9c", "#f6d1c5"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only, two lines, second line in Fraunces italic." },
+      "headline": { "displayName": "Headline", "purpose": "Section h2s; often splits a plain run and a Fraunces-italic run." },
+      "title": { "displayName": "Title", "purpose": "Card and component titles (capability names, process step names)." },
+      "body": { "displayName": "Body", "purpose": "Descriptive copy, Muted when secondary, Paper when primary." },
+      "numeral": { "displayName": "Numeral", "purpose": "Bronze circular badges for process steps and status marks." },
+      "quote": { "displayName": "Quote", "purpose": "Case-study headline and testimonial quote; Fraunces italic display serif." },
+      "label": { "displayName": "Label", "purpose": "Uppercase tracked eyebrows, stat captions, nav links, form labels." }
+    },
+    "shadows": [
+      { "name": "signature-glow", "value": "0 40px 120px -40px rgba(0,0,0,0.9)", "purpose": "Reserved exclusively for the AutomationConsole panel." }
+    ],
+    "motion": [
+      { "name": "reveal-ease", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Standard ease for scroll-triggered reveal animations." },
+      { "name": "reveal-duration", "value": "0.7s", "purpose": "Standard duration for Reveal/RevealGroup." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Pill button, Paper fill, Ink text, bronze hover with a slight scale lift.",
+      "html": "<a href=\"#contact\" class=\"ds-btn-primary\">Book a Call</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; border-radius: 9999px; background: #f7f4ec; color: #0a0a09; padding: 14px 24px; font-size: 14px; font-weight: 500; transition: transform 0.2s, background 0.2s; } .ds-btn-primary:hover { background: #b8935e; transform: scale(1.03); } .ds-btn-primary:focus-visible { outline: 2px solid #b8935e; outline-offset: 4px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Resting content card: hairline border, faint white tint on ink.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Workflow Automation</h3><p class=\"ds-card-body\">We map the manual steps buried in your operations and rebuild them as automations that run without supervision.</p></div>",
+      "css": ".ds-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; } .ds-card-title { color: #f7f4ec; font-size: 22px; font-weight: 500; margin: 0 0 12px; } .ds-card-body { color: #a8a49a; font-size: 15px; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Underline-only field with an animated bronze focus rule and a visible focus-visible ring.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Work Email</span><input class=\"ds-field-input\" type=\"email\" placeholder=\"jordan@company.com\" /></label>",
+      "css": ".ds-field { display: block; } .ds-field-label { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #a8a49a; } .ds-field-input { display: block; width: 100%; margin-top: 8px; padding-bottom: 10px; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.15); color: #f7f4ec; font-size: 15px; } .ds-field-input:focus-visible { outline: 2px solid rgba(184,147,94,0.7); outline-offset: 4px; }"
+    },
+    {
+      "name": "Section Eyebrow",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "The system's connective-tissue label: parenthesized, uppercase, tracked, bronze.",
+      "html": "<p class=\"ds-eyebrow\">( Capabilities )</p>",
+      "css": ".ds-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.2em; color: #b8935e; }"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Circular-bordered live-status indicator used in the AutomationConsole.",
+      "html": "<span class=\"ds-pill\"><span class=\"ds-pill-dot\"></span>Live</span>",
+      "css": ".ds-pill { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.1); border-radius: 9999px; padding: 4px 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #a8a49a; } .ds-pill-dot { width: 6px; height: 6px; border-radius: 9999px; background: rgba(52,211,153,0.8); animation: ds-pulse 2.4s ease-in-out infinite; } @keyframes ds-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Control Room",
+    "overview": "Lamb Solutions lives in near-total darkness lit by a single warm signal — the color of an indicator light left on overnight while the automation keeps working. The system pairs an almost-black ink field with one restrained bronze accent and just enough editorial serif italic to prove a human, not a template generator, wrote the words. Nothing shouts. Precision reads as confidence: thin borders instead of shadows, generous negative space instead of decoration, one signature live-data widget instead of stock illustration. The aesthetic rejects both extremes an AI agency could default to — the neon-gradient 'future tech' cliché, and the flat blue-and-white SaaS-template look. Lamb Solutions is closer to a well-run night shift at a precision workshop than a Silicon Valley pitch deck: dark, controlled, warm at the edges, and quietly certain of itself.",
+    "keyCharacteristics": [
+      "Near-black ink field, one warm bronze accent, restrained by design",
+      "Fraunces italic as the system's single voice of emphasis, always paired against plain Geist sans",
+      "Depth from opacity layering and hairline borders, not shadows",
+      "Asymmetric grids instead of centered symmetry",
+      "Uppercase tracked labels function as the system's punctuation"
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Bronze is the system's only accent. A second accent color must still read as warm and dark-compatible.", "section": "colors" },
+      { "name": "The Single Accent Line Rule", "body": "Fraunces italic never carries an entire heading or paragraph alone — it appears as one phrase inside a Geist-set sentence.", "section": "typography" },
+      { "name": "The Directional Split Rule", "body": "A section with two content types splits asymmetrically rather than stacking two equal columns.", "section": "layout" },
+      { "name": "The Flat-Except-One Rule", "body": "Everyday elevation is hairline-border-plus-opacity-tint; a real shadow is spent once, on the system's signature object.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep bronze to labels, hover states, glows, and single accent moments.",
+      "Do pair every Fraunces-italic phrase with plain Geist sans in the same sentence or heading.",
+      "Do use the uppercase tracked Label style for every eyebrow, form label, nav link, and stat caption.",
+      "Do default new sections to an asymmetric split when pairing two content types.",
+      "Do build elevation from hairline borders and opacity-tinted surfaces first."
+    ],
+    "donts": [
+      "Don't introduce a second accent hue outside bronze and the reserved error-only rust.",
+      "Don't use a sharp or small corner radius anywhere.",
+      "Don't add a conventional drop shadow to an ordinary card or button.",
+      "Don't run motion unconditionally; every animated element must respect prefers-reduced-motion.",
+      "Don't center a two-content-type section symmetrically."
+    ]
+  }
+}
