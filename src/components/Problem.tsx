@@ -74,7 +74,7 @@ export function Problem() {
             ( Problem )
           </p>
           <h2 className="mt-5 max-w-2xl text-balance text-[34px] font-medium leading-[1.1] tracking-[-0.02em] text-paper md:text-[44px]">
-            To zvuči poznato.{" "}
+            Zvuči poznato?{" "}
             <span className="font-serif-italic font-normal">
               Vreme je da se promeni.
             </span>

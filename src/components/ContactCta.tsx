@@ -92,10 +92,6 @@ export function ContactCta() {
                   <p className="mt-3 text-[14px] text-muted">
                     Javićemo vam se u roku od jednog radnog dana.
                   </p>
-                  <span className="mt-6 flex items-center gap-1.5 rounded-full border border-white/10 px-2.5 py-1 text-[11px] uppercase tracking-wide text-muted">
-                    <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-emerald-400/80" />
-                    Zabeleženo u redu
-                  </span>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
